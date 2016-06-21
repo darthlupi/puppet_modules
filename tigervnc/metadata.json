@@ -1,0 +1,14 @@
+{
+  "name": "lupi-tigervnc",
+  "version": "0.1.0",
+  "author": "Robert Lupinek",
+  "summary": "This module installs and configures Tiger VNC as a service.",
+  "license": "Apache 2.0",
+  "source": "http://172.20.151.91/admin/projects/devops/puppet",
+  "project_page": "http://172.20.151.91/admin/projects/devops/puppet",
+  "issues_url": "http://172.20.151.91/admin/projects/devops/puppet",
+  "dependencies": [
+    {"name":"puppetlabs-stdlib","version_requirement":">= 1.0.0"}
+  ]
+}
+
