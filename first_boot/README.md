@@ -6,74 +6,38 @@
 2. [Module Description - What the module does and why it is useful](#module-description)
 3. [Setup - The basics of getting started with firstboot](#setup)
     * [What firstboot affects](#what-firstboot-affects)
-    * [Setup requirements](#setup-requirements)
-    * [Beginning with firstboot](#beginning-with-firstboot)
 4. [Usage - Configuration options and additional functionality](#usage)
-5. [Reference - An under-the-hood peek at what the module is doing and how](#reference)
-5. [Limitations - OS compatibility, etc.](#limitations)
-6. [Development - Guide for contributing to the module](#development)
+
 
 ## Overview
 
-A one-maybe-two sentence summary of what the module does/what problem it solves.
-This is your 30 second elevator pitch for your module. Consider including
-OS/Puppet version it works with.
+This module create a firstboot service that will run once then disable itself.
+This module is specifically designed for RHEL 7 and CentOS 6.
 
 ## Module Description
 
-If applicable, this section should have a brief description of the technology
-the module integrates with and what that integration enables. This section
-should answer the questions: "What does this module *do*?" and "Why would I use
-it?"
 
-If your module has a range of functionality (installation, configuration,
-management, etc.) this is the time to mention it.
+This module create a firstboot service that will run once then disable itself.
+To add custom scripts actions edit the files/usr/local/bin/firstboot.sh script.
+This next two lines define what action to take on first boot:
+
+#Attempt to autoconfigure network
+/usr/local/bin/configure_network.sh auto
+
+Replace the above two lines with any scripts or commands you want to take place on the firstboot.
 
 ## Setup
 
 ### What firstboot affects
 
-* A list of files, packages, services, or operations that the module will alter,
-  impact, or execute on the system it's installed on.
-* This is a great place to stick any warnings.
-* Can be in list or paragraph form.
+Firstboot module will create and enable a new service named firstboot.service.
+By default it will also create the following files:
+/usr/local/bin/firstboot.sh - Used to configure the what script to trigger on first boot and disable the first boot service after initial run.
+/usr/local/bin/configure_network.sh - Used to auto configure the network interfaces based on vApp properties.
 
-### Setup Requirements **OPTIONAL**
 
-If your module requires anything extra before setting up (pluginsync enabled,
-etc.), mention it here.
 
-### Beginning with firstboot
-
-The very basic steps needed for a user to get the module up and running.
-
-If your most recent release breaks compatibility or requires particular steps
-for upgrading, you may wish to include an additional section here: Upgrading
-(For an example, see http://forge.puppetlabs.com/puppetlabs/firewall).
 
 ## Usage
 
-Put the classes, types, and resources for customizing, configuring, and doing
-the fancy stuff with your module here.
-
-## Reference
-
-Here, list the classes, types, providers, facts, etc contained in your module.
-This section should include all of the under-the-hood workings of your module so
-people know what the module is touching on their system but don't need to mess
-with things. (We are working on automating this section!)
-
-## Limitations
-
-This is where you list OS compatibility, version compatibility, etc.
-
-## Development
-
-Since your module is awesome, other users will want to play with it. Let them
-know what the ground rules for contributing are.
-
-## Release Notes/Contributors/Etc **Optional**
-
-If you aren't using changelog, put your release notes here (though you should
-consider using changelog). You may also add any additional sections you feel are
-necessary or important to include here. Please use the `## ` header.
+Firstboot has no parameters to customize.
